@@ -1,4 +1,3 @@
-<div class="authform">
   <h3>Edit <%= resource_name.to_s.humanize %></h3>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
     <%= devise_error_messages! %>
@@ -6,6 +5,68 @@
       <%= f.label :name %>
       <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
     </div>
+
+    <fieldset>
+      <div class="form-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :middle_name %>
+        <%= f.text_field :middle_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group">
+        <%= f.label :address1 %>
+        <%= f.text_field :address1, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address2 %>
+        <%= f.text_field :address2, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :state %>
+        <%= f.text_field :state, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :zip %>
+        <%= f.text_field :zip, class: 'form-control' %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group">
+        <%= f.label :contact_number %>
+        <%= f.text_field :contact_number, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :gender %>
+        <%= f.select :gender, options_for_select(User.genders.collect { |s| [s[0].humanize, s[0]] }, selected: resource.gender), {} , class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :shirt_size %>
+        <%= f.select :shirt_size, options_for_select(User.shirt_sizes.collect { |s| [s[0].humanize, s[0]] }, selected: resource.shirt_size), {} , class: "form-control" %>
+      </div>
+    </fieldset>
+
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
@@ -33,7 +94,8 @@
     </fieldset>
     <%= f.submit 'Update', :class => 'button right' %>
   <% end %>
-</div>
+
+
 <div class="authform">
 <h3>Cancel Account</h3>
 <p>Unhappy? We'll be sad to see you go.</p>
